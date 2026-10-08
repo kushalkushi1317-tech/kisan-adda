@@ -1,0 +1,6 @@
+{
+  "name": "Kisan Price",
+  "description": "Agricultural market price tracker for farmers to check live mandi rates, price trends, and best markets to sell.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
