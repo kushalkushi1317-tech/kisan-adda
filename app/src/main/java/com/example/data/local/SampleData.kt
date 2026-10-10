@@ -216,7 +216,7 @@ object SampleData {
         CropPrice(
             id = 15,
             cropName = "Rice",
-            category = "Cereals",
+            category = "Grains",
             state = "Punjab",
             district = "Ludhiana",
             marketName = "Khanna Grain Market",
@@ -230,7 +230,7 @@ object SampleData {
         CropPrice(
             id = 16,
             cropName = "Rice",
-            category = "Cereals",
+            category = "Grains",
             state = "Andhra Pradesh",
             district = "East Godavari",
             marketName = "Rajahmundry APMC",
@@ -244,7 +244,7 @@ object SampleData {
         CropPrice(
             id = 17,
             cropName = "Wheat",
-            category = "Cereals",
+            category = "Grains",
             state = "Madhya Pradesh",
             district = "Sehore",
             marketName = "Sehore Sharbati Mandi",
@@ -258,7 +258,7 @@ object SampleData {
         CropPrice(
             id = 18,
             cropName = "Wheat",
-            category = "Cereals",
+            category = "Grains",
             state = "Haryana",
             district = "Karnal",
             marketName = "Karnal Grain Mandi",
@@ -272,7 +272,7 @@ object SampleData {
         CropPrice(
             id = 19,
             cropName = "Maize",
-            category = "Cereals",
+            category = "Grains",
             state = "Karnataka",
             district = "Davanagere",
             marketName = "Davanagere APMC",

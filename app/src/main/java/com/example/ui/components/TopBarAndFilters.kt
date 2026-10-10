@@ -293,10 +293,8 @@ fun CategorySelectorRow(
         CropCategory.ALL,
         CropCategory.VEGETABLES,
         CropCategory.FRUITS,
-        CropCategory.CEREALS,
-        CropCategory.PULSES,
-        CropCategory.SPICES,
-        CropCategory.OTHER
+        CropCategory.GRAINS,
+        CropCategory.PULSES
     )
 
     Row(
@@ -528,7 +526,7 @@ fun LanguageDialog(
         },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                AppLanguage.values().forEach { lang ->
+                listOf(AppLanguage.ENGLISH, AppLanguage.HINDI, AppLanguage.TELUGU).forEach { lang ->
                     val isSelected = lang == currentLanguage
                     Surface(
                         color = if (isSelected) HarvestGreenContainer else Color(0xFFF3F4F6),

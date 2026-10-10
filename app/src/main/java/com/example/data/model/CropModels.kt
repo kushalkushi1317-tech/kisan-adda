@@ -12,10 +12,8 @@ enum class CropCategory(val id: String, val icon: String) {
     ALL("All", "🌾"),
     VEGETABLES("Vegetables", "🥦"),
     FRUITS("Fruits", "🍎"),
-    CEREALS("Cereals", "🌾"),
-    PULSES("Pulses", "🫘"),
-    SPICES("Spices", "🌶️"),
-    OTHER("Other Crops", "🌱")
+    GRAINS("Grains", "🌾"),
+    PULSES("Pulses", "🫘")
 }
 
 @Entity(tableName = "crop_prices")

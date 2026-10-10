@@ -1,0 +1,94 @@
+// Prisma schema for Kissan Adda – Smart Crop Price Information System
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Crop {
+  id          Int           @id @default(autoincrement())
+  name        String
+  nameHi      String?
+  nameTe      String?
+  category    String        // Vegetables, Fruits, Grains, Pulses, Spices, Oilseeds, Commercial
+  imageUrl    String?
+  icon        String?       // Emoji or icon path
+  variety     String?       // e.g., Grade A Hybrid, Sharbati, Sona Masoori
+  active      Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  prices      MarketPrice[]
+
+  @@index([category])
+  @@index([name])
+}
+
+model Market {
+  id          Int           @id @default(autoincrement())
+  name        String
+  state       String
+  district    String
+  latitude    Float?
+  longitude   Float?
+  active      Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  prices      MarketPrice[]
+
+  @@index([state, district])
+  @@index([name])
+}
+
+model MarketPrice {
+  id              Int       @id @default(autoincrement())
+  cropId          Int
+  marketId        Int
+  minPrice        Float     // In Rs per kg/quintal
+  maxPrice        Float
+  modalPrice      Float     // Average auction clearing price
+  priceUnit       String    @default("Rs/Quintal") // "Rs/Kg" or "Rs/Quintal"
+  priceChange     Float     @default(0.0) // 24h percentage change
+  variety         String?   // Commodity grade/variety
+  marketDate      DateTime  @default(now())
+  dataSource      String    @default("Agmarknet Simulated / Demo Data")
+  isDemoData      Boolean   @default(true)
+  importTimestamp DateTime  @default(now())
+
+  crop            Crop      @relation(fields: [cropId], references: [id], onDelete: Cascade)
+  market          Market    @relation(fields: [marketId], references: [id], onDelete: Cascade)
+
+  // Prevent duplicate records for same crop, market, date, variety, and source
+  @@unique([cropId, marketId, marketDate, variety, dataSource])
+  @@index([cropId, marketDate])
+  @@index([marketId, marketDate])
+}
+
+model UserPreference {
+  id                Int      @id @default(autoincrement())
+  userId            String   @unique
+  name              String?
+  phone             String?
+  preferredLanguage String   @default("en") // en, hi, te
+  preferredState    String?
+  preferredDistrict String?
+  favoriteCrops     Int[]    @default([])
+  savedMarkets      Int[]    @default([])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model AdminImportLog {
+  id              Int      @id @default(autoincrement())
+  adminId         String
+  role            String   @default("ADMIN")
+  sourceInfo      String   // CSV Import, API Sync, Manual Entry
+  filename        String?
+  successCount    Int      @default(0)
+  failedCount     Int      @default(0)
+  importTimestamp DateTime @default(now())
+  notes           String?
+}

@@ -1,6 +1,6 @@
 {
-  "name": "Kisan Price",
-  "description": "Agricultural market price tracker for farmers to check live mandi rates, price trends, and best markets to sell.",
+  "name": "Kissan Adda",
+  "description": "Kissan Adda – Smart Crop Price Information System for Indian farmers, traders, and agricultural markets.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

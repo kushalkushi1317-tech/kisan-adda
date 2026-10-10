@@ -46,8 +46,8 @@ object LocalizationManager {
                 AppLanguage.TAMIL -> "பழங்கள்"
                 AppLanguage.MARATHI -> "फळे"
             }
-            "cereals" -> when (lang) {
-                AppLanguage.ENGLISH -> "Cereals"
+            "grains", "cereals" -> when (lang) {
+                AppLanguage.ENGLISH -> "Grains"
                 AppLanguage.HINDI -> "अनाज"
                 AppLanguage.KANNADA -> "ಧಾನ್ಯಗಳು"
                 AppLanguage.TELUGU -> "ధాన్యాలు"
